@@ -62,6 +62,39 @@ nav a:hover {
     color: var(--accent-orange);
 }
 
+/* --- Mobile Menu Toggle --- */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 10px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: white;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
 /* --- Categories --- */
 .category-tag {
     display: inline-block;
@@ -339,11 +372,94 @@ h1, h2, h3 {
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
-    .logo-text {
-        font-size: 4rem;
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 3rem;
     }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: rgba(13, 13, 13, 0.98);
+        backdrop-filter: blur(15px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-left: 1px solid var(--glass-border);
+    }
+
+    nav.active {
+        right: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    nav a {
+        font-size: 2rem;
+    }
+
+    .logo-text {
+        font-size: clamp(3rem, 15vw, 6rem);
+    }
+
     .hero-subtitle {
         font-size: 1.1rem;
+        padding: 0 20px;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    .shorts-section, .video-section, .contact-section, .socials {
+        padding: 60px 0;
+    }
+
+    .shorts-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+
+    .logo-container {
+        padding: 20px;
+        transform: rotateX(5deg) rotateY(-2deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 3.5rem;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 1.5rem;
+    }
+
+    .contact-card {
+        padding: 25px;
+    }
+
+    .contact-card h3 {
+        font-size: 1.6rem;
     }
 }
